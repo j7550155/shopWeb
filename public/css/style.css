@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#nav {
+    margin: 0 auto;
+    padding: 5px 10px;
+    width: 1000px;
+    height: 50px;
+    background: rgba(1, 1, 1, 0.6);
+}
+#content {
+    margin: 0 auto;
+    /* padding: 5px 10px; */
+    width: 1000px;
+    height: 670px;
+    /* background: rgba(1, 1, 1, 0.6); */
+}
+#content .view1 {
+    width: 1000px;
+    height: 40px;
+    background: sandybrown;
+}
+#content .view1 ul {
+    display: inline-block;
+    margin: 5px 5px;
+    height: 30px;
+}
+#content .view1 ul li {
+   list-style: none;
+   float: left;
+   height: 30px;
+   border: 1px solid black;
+   padding: 0 10px;
+   font-size: 15px;
+   line-height: 30px;
+}
+#content .view1 ul li:hover {
+ 
+   background: blanchedalmond;
+   color: black;
+ 
+ }
+#content .view2 {
+    width: 1000px;
+    height: 500px;
+    background: salmon;
+}
+#content .view2 .c1{
+    float: left;
+    width: 490px;
+    height: 500px;
+    background: salmon;
+}
+
+#content .view2 .c2{
+    float:right;
+    width: 490px;
+    height: 500px;
+    background: sienna;
+}
+#content .view2 table,th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+#content .view2 tr:hover{
+    background: tan;
+}
+#content .view2 .product td {
+   max-width: 150px;
+   max-height: 70px;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+}
+#content .view2 .product .td-img{
+    width: 150px;
+    height: 70px;
+    overflow: auto;
+  }
+#content .view2 .product td img{
+    display: inline-block;
+   width:70px;
+   height: 70px;
+ }
+/* #content .view2 th{
+    text-align: center;
+    border: 1px solid black;
+}
+#content .view2 td{
+    text-align: center;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+} */
+
+.prePhoto {
+    width: 450px;
+    height: 150px;
+    overflow: auto;
+}
+.prePhoto img {
+    /* display: inline-block; */
+    margin:2px 2px;
+    width: 30%;
+    /* height: 50%; */
+    /* overflow: auto; */
+    background-image: url("../img/x.png");
+}
+.prePhoto img:hover{
+    opacity: 0.5;
+}
+.prePhoto .click{
+    opacity: 0.2;
+    background-image: url("../img/x.png");
+}
+#footer {
+    margin: 0 auto;
+    padding: 5px 10px;
+    width: 1000px;
+    height: 50px;
+    background: rgba(1, 1, 1, 0.6);
+}
