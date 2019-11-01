@@ -13,17 +13,17 @@
             @endforeach
         </ul>
         @endif
-        <div>
+        <div class="form-group">
             <label for="email">
-                email: <input type="text" id='email' name='email' placeholder="email" value="{{old('email')}}">
+                email: <input type="text" class="form-control" id='email' name='email' placeholder="email" value="{{old('email')}}">
             </label>
         </div>
         <div>
             <label for="pwd">
-                密碼: <input type="text" name="pwd" id="pwd" placeholder="password" value="{{old('pwd')}}">
+                密碼: <input type="text" class="form-control" name="pwd" id="pwd" placeholder="password" value="{{old('pwd')}}">
             </label>
         </div>
-        <button type="submit">送出</button>
+        <button class="btn btn-primary" type="submit">送出</button>
     </form>
 </div>
 @endsection

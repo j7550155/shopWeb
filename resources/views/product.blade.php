@@ -9,48 +9,42 @@
         margin: 20px auto;
         /* padding: 0 50px; */
         width: 1000px;
-        height: 800px;
+        height: 1200px;
 
     }
 
-    dl {
-        margin: 0 15px;
-    }
 
-    dd {
+    .img {
         float: left;
-        width: 230px;
+        width: 190px;
         height: 300px;
-        margin: 3px 5px;
+        margin: 0 0;
         border: 1px solid black;
         text-align: center; //用參照物 讓圖居中
+        overflow: auto;
     }
 
-    dd i {
+    .img i {
         /* display: inline-block;       */
         height: 100%;
     }
 
-
-    dd img {
-        /* display: inline-block; */
+    .img img {
         vertical-align: top;
         margin: 0;
         padding: 0;
-        width: 100px;
-        height: 200px;
-    }
-    dd .img {
         width: 100%;
-        height: 205px;
-        overflow: auto;
+        height: 100%;
     }
-    nav {
-        margin: 5px 5px;
-        height: 40px;
-  
+
+
+    .card {
+        height: 485px;
+        float: left;
+        margin: 2px 1px;
     }
-    .pagination li {
+
+    /* .pagination li {
         border-radius: 50px;
         border: 1px solid black ;
         margin: 0 3px;
@@ -59,53 +53,79 @@
         text-align: center;
         list-style: none;;
         float: left;
-    }
-   
-
-    
+    } */
 </style>
 @section('content')
 
 
 <div class="content">
-        <h1>Product</h1>
-        
-        <div id='cart'>
-            <p></p>
-            <button id="del_cart">清空購物車</button>
-            <a class="pay" href="#">結帳去</a>
-        </div>
-{{$data->links()}}
-    <dl>
+    <h1>Product</h1>
+
+    <div id='cart'>
+        <p></p>
+        <button id="del_cart" class="btn btn-warning mb-1">清空購物車</button>
+        <a class="pay btn btn-success mb-1" href="#">結帳去</a>
+    </div>
+    {{$data->links()}}
+
+
+    <div>
         @foreach($data as $item)
-        <dd>
-            <b class="pName">{{$item['name']}}</b>
-            <div class="cartInfo">
-                <select name="count" id="{{$item['id']}}" data-id="{{$item['id']}}">
+        <div class="card" style="width:230px">
+            <div class="card-body">
+                <b class="pName">{{$item['name']}}</b>
+                <div class="cartInfo">
+                    <select name="count" id="{{$item['id']}}" data-id="{{$item['id']}}">
+                        @if($item['count']>0)
+                        @for($i=1;$i<=$item['count'];$i++) <option value="{{$i}}">{{$i}}</option>
+                            @endfor
+                            @else
+                            <option value="null">0</option>
+                            @endif
+                    </select>
                     @if($item['count']>0)
-                    @for($i=1;$i<=$item['count'];$i++) <option value="{{$i}}">{{$i}}</option>
-                        @endfor
-                        @else
-                        <option value="null">0</option>
-                        @endif
-                </select>
-                @if($item['count']>0)
-                <button class="cartBtn" data-id="{{$item['id']}}" data-name="{{$item['name']}}" data-price="{{$item['price']}}"> + 購物車</button>
-                @else
-                <button disabled="disabled" class="cartBtn" data-id="{{$item['id']}}" data-name="{{$item['name']}}" data-price="{{$item['price']}}"> + 購物車</button>
-                @endif
+                    <button class="cartBtn btn btn-primary btn-sm" data-id="{{$item['id']}}" data-name="{{$item['name']}}" data-price="{{$item['price']}}"> + 購物車</button>
+                    @else
+                    <button class="btn disabled btn-sm" data-id="{{$item['id']}}" data-name="{{$item['name']}}" data-price="{{$item['price']}}"> + 購物車</button>
+                    @endif
+                </div>
+                <p>{{$item['description']}}</p>
+                <p style="color:red;">NT.<b class="price">{{$item['price']}}</b>
+                    @if(count($item['photo'])>1)
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal{{$item['name']}}">
+                        此商品有更多圖片
+                    </button>
+                    <div class="modal fade" id="myModal{{$item['name']}}">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- 模态框头部 -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">更多圖片</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <!-- 模态框主体 -->
+                                <div class="modal-body">
+                                   @foreach($item['photo'] as $photo)
+                                   <img src="{{ asset($photo) }}" class="card-img-bottom" alt="">
+                                   @endforeach
+                                </div>
+                                <!-- 模态框底部 -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                </p>
+                <div class="img">
+                    <i></i>
+                    <img src="{{ asset($item['photo'][0]) }}" class="card-img-bottom" alt="">
+                </div>
             </div>
-            <p>{{$item['description']}}</p>
-            <p style="color:red;">NT.<b class="price">{{$item['price']}}</b></p>
-            <div class="img">
-                <i></i>
-                @foreach($item['photo'] as $photo)
-                <img src="{{$photo}}" alt="">
-                @endforeach
-            </div>
-        </dd>
+        </div>
         @endforeach
-    </dl>
+    </div>
 
 </div>
 

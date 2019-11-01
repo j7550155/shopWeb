@@ -16,6 +16,9 @@ class AdminController extends Controller
         $data=[
             'title'=>'管理員',
         ];
+        if(session('user_id')){
+            return redirect('/admin/home');
+        }
         return view('admin.adminIndex',$data);
         
     }

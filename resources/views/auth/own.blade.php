@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}"></script>
     <title>Document</title>
     <style>
         * {
@@ -62,13 +64,31 @@
 </head>
 
 <body>
+    <nav id="nav" class="navbar navbar-expand-sm bg-info navbar-dark">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/product">回主頁</a>
+            </li>
+            @if(session()->has('user_id'))
+            <li class="nav-item">
+                <a class="nav-link" href="/user/auth/signOut">登出</a>
+            </li>
+
+            @else
+            <li class="nav-item">
+                <a class="nav-link" href="/user/auth/login">登入</a>
+            </li>
+            @endif
+        </ul>
+        <!-- <a href="#">{{session('user_id')}}</a> -->
+    </nav>
     <h3>會員名稱:{{$data->name}}</h3> <a href="/user/auth/signOut">登出</a>
     <ul id="list">
         <li id="order" class="active">購買紀錄</li>
         <li id="member">會員資料更改</li>
     </ul>
     <div class="orderHistory">
-        <table>
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <td>#</td>
@@ -104,24 +124,24 @@
             @endforeach
         </ul>
         @endif
-        <form action="/user/auth/ownEdit" method="post">
+        <form class="m-2" action="/user/auth/ownEdit" method="post">
             {!! csrf_field() !!}
-            <div>
+            <div class="form-group">
                 <label for="name">
-                    暱稱:<input type="text" id="name" value="{{$data->name}}" disabled="disabled" name="name"> <span class='edit'>編輯</span>
+                    暱稱:<input type="text" class="form-control" id="name" value="{{$data->name}}" disabled="disabled" name="name"> <span class='edit'>編輯</span>
                 </label>
             </div>
-            <div>
+            <div class="form-group">
                 <label for="pwd">
-                    密碼:<input type="text" id="pwd" name="password">
+                    密碼:<input type="text" class="form-control" id="pwd" name="password">
                 </label>
             </div>
-            <div>
+            <div class="form-group">
                 <label for="pwd2">
-                    密碼確認:<input type="text" id="pwd2" name="password2">
+                    密碼確認:<input type="text" class="form-control" id="pwd2" name="password2">
                 </label>
             </div>
-            <button type="submit">送出更改</button>
+            <button type="submit" class="btn btn-success">送出更改</button>
 
         </form>
     </div>

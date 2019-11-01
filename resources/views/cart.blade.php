@@ -1,4 +1,4 @@
-@extends('layouts'))
+@extends('layouts')
 
 @section('content')
 <style>
@@ -8,7 +8,7 @@
 </style>
 <div class='content'>
 
-    <table class="cart_table">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <td>項目號</td>
@@ -22,8 +22,14 @@
 
         </tbody>
     </table>
-    <p> 總價:<b class="totalPrice"></b></p>
-    <button class="pay">結帳 </button>
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="col-md-12 text-center">
+                <p> 總價:<b class="totalPrice"></b></p>
+                <button class="pay btn btn-success">結帳 </button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>

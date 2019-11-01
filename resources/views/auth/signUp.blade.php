@@ -13,25 +13,25 @@
         @endif
         <div>
             <label for="email">
-                email: <input type="text" id='email' name='email' placeholder="email" value="{{old('email')}}">
+                email: <input type="text" id='email'class="form-control" name='email' placeholder="email" value="{{old('email')}}">
             </label>
         </div>
         <div>
             <label for="pwd">
-                密碼: <input type="text" name="pwd" id="pwd" placeholder="password" value="{{old('pwd')}}">
+                密碼: <input type="text" name="pwd" class="form-control" id="pwd" placeholder="password" value="{{old('pwd')}}">
             </label>
         </div>
         <div>
             <label for="pwd2">
-                確認密碼: <input type="text" name="pwd2" id="pwd2" placeholder="password">
+                確認密碼: <input type="text" name="pwd2" class="form-control" id="pwd2" placeholder="password">
             </label>
         </div>
         <div>
             <label for="name">
-                暱稱: <input type="text" name="name"" id=" name" placeholder="暱稱" value="{{old('name')}}">
+                暱稱: <input type="text" name="name" class="form-control" id=" name" placeholder="暱稱" value="{{old('name')}}">
             </label>
         </div>
-        <button type="submit">送出</button>
+        <button class="btn btn-primary" type="submit">送出</button>
     </form>
 </div>
 @endsection
